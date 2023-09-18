@@ -6,41 +6,82 @@ package fizzbuzz;
 public class App {
 
     public static void fizzbuzz() {
-        for(int i=1 ; i <= 300 ; i++) {
-            if (isDivisibleBy(i, 13)) {
-                if(isDivisibleBy(i, 3)) {
-                    System.out.println("FizzFezz");
-                } else if (isDivisibleBy(i, 5)) {
-                    System.out.println("FezzBuzz");
-                } else if (isDivisibleBy(i, 7)) {
-                    System.out.println("FezzBang");
-                } else if (isDivisibleBy(i, 11)) {
-                    System.out.println("FezzBong");
-                } else {
-                    System.out.println("Fezz");
-                }
-            } else if (isDivisibleBy(i, 11)) {
-                System.out.println("Bong");
-            } else if (isDivisibleBy(i, 3)) {
-                if(isDivisibleBy(i, 5)) {
-                    System.out.println("FizzBuzz");
-                } else {
-                    System.out.println("Fizz");
-                }
-            } else if (isDivisibleBy(i, 7)) {
-                if (isDivisibleBy(i, 3)) {
-                    System.out.println("FizzBang");
-                } else if (isDivisibleBy(i, 5)) {
-                    System.out.println("BuzzBang");
-                } else {
-                    System.out.println("Bang");
-                }
-            } else if (isDivisibleBy(i, 5)) {
-                System.out.println("Buzz");
-            } else {
-                System.out.println(i);
+        // Trying a completely new, refactored approach inspired by Andrej!
+        for(int i=1 ; i <= 100 ; i++) {
+            String output = "";
+            if (isDivisibleBy(i, 3)) {
+                output += "Fizz";
+            } 
+
+            if (isDivisibleBy(i, 5)) {
+                output += "Buzz";
             }
 
+            if (isDivisibleBy(i, 7)) {
+                output += "Bang";
+            }
+
+            if (isDivisibleBy(i, 11)) {
+                output = "Bong";
+            }
+
+            if (isDivisibleBy(i, 13)) {
+                // this isnt working yet as I need to find a way to insert the Fezz at the start of the output string!
+                if (output.contains("B")) {
+                    output = "Fezz";
+                }
+                
+            }
+
+            if (isDivisibleBy(i, 3) == false && isDivisibleBy(i, 5) == false && isDivisibleBy(i, 7) == false && isDivisibleBy(i, 11) == false && isDivisibleBy(i, 13) == false && isDivisibleBy(i, 17) == false) {
+                output = Integer.toString(i);
+            }
+
+            System.out.println(output);
+        }
+        
+
+
+
+
+
+
+            // add rule 3
+            // if (isDivisibleBy(i, 13)) {
+            //     if(isDivisibleBy(i, 3)) {
+            //         System.out.println("FizzFezz");
+            //     } else if (isDivisibleBy(i, 5)) {
+            //         System.out.println("FezzBuzz");
+            //     } else if (isDivisibleBy(i, 7)) {
+            //         System.out.println("FezzBang");
+            //     } else if (isDivisibleBy(i, 11)) {
+            //         System.out.println("FezzBong");
+            //     } else {
+            //         System.out.println("Fezz");
+            //     }
+            // } else if (isDivisibleBy(i, 11)) {
+            //     System.out.println("Bong");
+            // } else if (isDivisibleBy(i, 3)) {
+            //     if(isDivisibleBy(i, 5)) {
+            //         System.out.println("FizzBuzz");
+            //     } else {
+            //         System.out.println("Fizz");
+            //     }
+            // } else if (isDivisibleBy(i, 7)) {
+            //     if (isDivisibleBy(i, 3)) {
+            //         System.out.println("FizzBang");
+            //     } else if (isDivisibleBy(i, 5)) {
+            //         System.out.println("BuzzBang");
+            //     } else {
+            //         System.out.println("Bang");
+            //     }
+            // } else if (isDivisibleBy(i, 5)) {
+            //     System.out.println("Buzz");
+            // } else {
+            //     System.out.println(i);
+            // }
+
+            // Added rule 1 and 2
             // if(i % 11 == 0) {
             //     System.out.println("Bong");
             // } else if (i % 3 == 0 && i % 5 == 0) {
@@ -58,7 +99,7 @@ public class App {
             // } else {
             //     System.out.println(i);
             // }
-        }
+        // }
     }
 
     public static boolean isDivisibleBy(int numberToTest, int dividesBy) {
